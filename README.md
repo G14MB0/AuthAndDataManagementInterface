@@ -26,6 +26,8 @@ All user information are saved as is except for sensitive information (like pass
 ***No sensitive data is stored or printed. Only after encrypting, they are saved into Postgres database. Password matching is made with encrypted password to limitate password encrypt-decrypt***
 <br/>
 
+### currently running at [this link](https://ready2test.it/docs) on a Ubuntu machine in a DigitalOcean Droplet
+
 ## There's more
 This code is ready for production (except for environment variables that must be defined in production server) and comes with:
 - Robust Endpoint with input and output data validaiton using Pydantic Schemas
