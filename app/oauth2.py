@@ -16,11 +16,10 @@ from app.config import settings
 #this line of code simply create a scheme for the password automatically checking 
 #from the login API requestForm
 # Determine if the app is running in a secure environment (e.g., production with HTTPS)
-secure_scheme = os.getenv('SECURE_SCHEME', 'http')  # Default to 'http' if not specified
 domain = os.getenv('DOMAIN', 'ready2test.it')
 
 # Use HTTPS for the tokenUrl if SECURE_SCHEME is set to 'https'
-tokenUrl = f"{secure_scheme}://{domain}/api/v1/login"
+tokenUrl = f"https://{domain}/api/v1/login"
 
 ######################################################
 ##      CHANGE THIS BASED ON DEV/PROD               ##
