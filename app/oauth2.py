@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 from . import schemas
 from app.database import get_db
 
+import os
+
 from sqlalchemy.orm import Session
 from app import models
 
@@ -13,7 +15,19 @@ from app.config import settings
 
 #this line of code simply create a scheme for the password automatically checking 
 #from the login API requestForm
-oaut2_scheme = OAuth2PasswordBearer(tokenUrl='api/v1/login')  ## this must coincide with the ./login endopoint without the ./
+# Determine if the app is running in a secure environment (e.g., production with HTTPS)
+secure_scheme = os.getenv('SECURE_SCHEME', 'http')  # Default to 'http' if not specified
+domain = os.getenv('DOMAIN', 'ready2test.it')
+
+# Use HTTPS for the tokenUrl if SECURE_SCHEME is set to 'https'
+tokenUrl = f"{secure_scheme}://{domain}/api/v1/login"
+
+######################################################
+##      CHANGE THIS BASED ON DEV/PROD               ##
+######################################################
+# oaut2_scheme = OAuth2PasswordBearer(tokenUrl='api/v1/login')  ## this must coincide with the ./login endopoint without the ./
+oaut2_scheme = OAuth2PasswordBearer(tokenUrl=tokenUrl)  ## this must coincide with the ./login endopoint without the ./
+
 
 #SECRET_KEY
 #Algorithm
