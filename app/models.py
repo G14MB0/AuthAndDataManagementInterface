@@ -54,6 +54,3 @@ class Note(Base):
     # Relationship to parent
     owner = relationship('Users')
 
-    __table_args__ = (
-        UniqueConstraint('name', 'owner_id', name='_name_owner_id_uc'),
-    )
