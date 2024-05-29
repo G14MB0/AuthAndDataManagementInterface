@@ -120,7 +120,7 @@ class NoteCreate(BaseModel):
     #     return v
 
 
-class NoteResponse(DataCreate):
+class NoteResponse(NoteCreate):
     id: int
     owner_id: int
     created_at: datetime

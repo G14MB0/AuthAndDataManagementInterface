@@ -19,8 +19,8 @@ from app.config import settings
 domain = os.getenv('DOMAIN', 'ready2test.it')
 
 # Use HTTPS for the tokenUrl if SECURE_SCHEME is set to 'https'
-tokenUrl = f"https://{domain}/api/v1/login"
-# tokenUrl = f"http://{settings.domain}/api/v1/login"
+# tokenUrl = f"https://{domain}/api/v1/login"
+tokenUrl = f"http://{settings.domain}/api/v1/login"
 
 ######################################################
 ##      CHANGE THIS BASED ON DEV/PROD               ##
