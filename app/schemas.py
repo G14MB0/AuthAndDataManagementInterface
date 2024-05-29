@@ -62,7 +62,7 @@ class TokenData(BaseModel):
 
 
 ######################################################
-##           INVENTORY OPERATION SCHEMAS            ##
+##           DATA OPERATION SCHEMAS            ##
 ######################################################
 
 class DataCreate(BaseModel):
@@ -95,3 +95,39 @@ class DataUpdate(BaseModel):
     name: str
     data: int
 
+
+#################################################
+#			NOTES OPERATION SCHEMAS								 
+#################################################
+
+class NoteCreate(BaseModel):
+    title: str
+    content: str
+
+    # # Serialize data when dumping to JSON
+    # class Config:
+    #     json_encoders = {
+    #         dict: lambda v: json.dumps(v)
+    #     }
+        
+    # @validator('data', pre=True, each_item=False)
+    # def parse_json(cls, v):
+    #     if isinstance(v, str):
+    #         try:
+    #             return json.loads(v)
+    #         except ValueError:
+    #             raise ValueError(f"Unable to parse string to dict: {v}")
+    #     return v
+
+
+class NoteResponse(DataCreate):
+    id: int
+    owner_id: int
+    created_at: datetime
+
+
+class NoteUpdate(BaseModel):
+    id: int
+    title: str
+    content: str
+    
